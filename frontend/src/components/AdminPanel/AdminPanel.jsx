@@ -7,7 +7,7 @@ const AdminPanel = () => {
     const handleViewProducts = async () => {
         const token = localStorage.getItem('auth-token');
         try {
-            const response = await fetch('http://localhost:4000/admin/allproducts', {
+            const response = await fetch('https://bbuyorcry3.onrender.com/admin/allproducts', {
                 headers: {
                     'auth-token': token
                 }
@@ -23,7 +23,7 @@ const AdminPanel = () => {
     const handleDeleteProduct = async () => {
         const token = localStorage.getItem('auth-token');
         try {
-            const response = await fetch('http://localhost:4000/admin/removeproduct', {
+            const response = await fetch('https://bbuyorcry3.onrender.com/admin/removeproduct', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

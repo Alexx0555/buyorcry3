@@ -9,8 +9,8 @@ const Shop = () => {
     const [newCollection, setNewCollection] = useState([]);
 
     useEffect(() => {
-        console.log("Shop.jsx: popular, newCollection", popular, newCollection); // Added log
-        axios.get('http://localhost:4000/allproducts')
+        console.log("Shop.jsx: popular, newCollection", popular, newCollection);
+        axios.get('https://bbuyorcry3.onrender.com/allproducts')
             .then(response => {
                 setPopular(response.data.slice(0, 4));
                 setNewCollection(response.data.slice(4, 12));

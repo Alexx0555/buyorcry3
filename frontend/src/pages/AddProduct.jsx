@@ -13,7 +13,7 @@ const AddProduct = () => {
         if (file) {
             const reader = new FileReader();
             reader.onloadend = () => {
-                setImage(reader.result); // Store base64 encoded string
+                setImage(reader.result);  
             };
             reader.readAsDataURL(file);
         }
@@ -22,7 +22,7 @@ const AddProduct = () => {
     const handleAddProduct = async () => {
         const token = localStorage.getItem('auth-token');
         try {
-            const response = await fetch('http://localhost:4000/admin/addproduct', {
+            const response = await fetch('https://bbuyorcry3.onrender.com/admin/addproduct', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -30,7 +30,7 @@ const AddProduct = () => {
                 },
                 body: JSON.stringify({
                     name: name,
-                    image: image, // Send base64 encoded string
+                    image: image, 
                     category: category,
                     new_price: new_price,
                     old_price: old_price

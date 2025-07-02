@@ -12,7 +12,7 @@ const CheckoutDetails = () => {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [email, setEmail] = useState('');
     const { all_product, cartItems } = useContext(ShopContext);
-
+ 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -35,7 +35,7 @@ const CheckoutDetails = () => {
         };
 
         try {
-            const response = await fetch('http://localhost:4000/create-checkout-session', {
+            const response = await fetch('https://bbuyorcry3.onrender.com/create-checkout-session', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

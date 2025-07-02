@@ -4,12 +4,12 @@ import './ProductList.css';
 
 const ProductList = () => {
     const [products, setProducts] = useState([]);
-
+ 
     useEffect(() => {
         const fetchProducts = async () => {
             const token = localStorage.getItem('auth-token');
             try {
-                const response = await fetch('http://localhost:4000/admin/allproducts', {
+                const response = await fetch('https://bbuyorcry3.onrender.com/admin/allproducts', {
                     headers: {
                         'auth-token': token
                     }
@@ -28,7 +28,7 @@ const ProductList = () => {
     const handleDeleteProduct = async (productId) => {
         const token = localStorage.getItem('auth-token');
         try {
-            const response = await fetch('http://localhost:4000/admin/removeproduct', {
+            const response = await fetch('https://bbuyorcry3.onrender.com/admin/removeproduct', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -40,7 +40,6 @@ const ProductList = () => {
             });
             const data = await response.json();
             alert('Product deleted successfully!');
-            // Refresh the product list after deleting
             setProducts(products.filter(product => product.id !== productId));
         } catch (error) {
             console.error('Error:', error);
@@ -51,7 +50,7 @@ const ProductList = () => {
     const handleToggleStock = async (productId, currentOutOfStock) => {
         const token = localStorage.getItem('auth-token');
         try {
-            const response = await fetch('http://localhost:4000/admin/toggle-stock', {
+            const response = await fetch('https://bbuyorcry3.onrender.com/admin/toggle-stock', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -64,7 +63,6 @@ const ProductList = () => {
             });
             const data = await response.json();
             if (data.success) {
-                // Update the product stock status in the local state
                 setProducts(products.map(product =>
                     product.id === productId ? { ...product, outOfStock: !currentOutOfStock } : product
                 ));

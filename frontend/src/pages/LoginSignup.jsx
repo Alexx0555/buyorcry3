@@ -12,12 +12,12 @@ const LoginSignup = () => {
 
     const changeHandler = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
+    }; 
 
     const login = async () => {
         console.log("Login function executed", formData);
         try {
-            const response = await axios.post('http://localhost:4000/login', formData);
+            const response = await axios.post('https://bbuyorcry3.onrender.com/login', formData);
             if (response.data.success) {
                 localStorage.setItem('auth-token', response.data.token);
                 console.log("Signup: Token stored in local storage:", response.data.token);
@@ -35,7 +35,7 @@ const LoginSignup = () => {
     const signup = async () => {
         console.log("Signup function executed", formData);
         try {
-            const response = await axios.post('http://localhost:4000/signup', formData);
+            const response = await axios.post('https://bbuyorcry3.onrender.com/signup', formData);
             if (response.data.success) {
                 localStorage.setItem('auth-token', response.data.token);
                 console.log("Login: Token stored in local storage:", response.data.token);

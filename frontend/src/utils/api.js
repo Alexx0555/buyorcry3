@@ -1,4 +1,6 @@
-const API_BASE_URL = 'http://localhost:4000';
+import { FunctionSquare } from "lucide-react";
+
+const API_BASE_URL = 'https://bbuyorcry3.onrender.com';
 
 export const fetchOrderHistory = async () => {
   const token = localStorage.getItem('auth-token');

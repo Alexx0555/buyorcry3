@@ -15,7 +15,7 @@ const ShopContextProvider = (props) => {
     const [addToCartMessage, setAddToCartMessage] = useState(null);
     const navigate = useNavigate();
   useEffect(() => {
-       axios.get('http://localhost:4000/allproducts')
+       axios.get('https://bbuyorcry3.onrender.com/allproducts')
            .then((response) => {
                setAll_Product(response.data);
            })
@@ -26,7 +26,7 @@ const ShopContextProvider = (props) => {
 
    useEffect(() => {
        if (localStorage.getItem('auth-token')) {
-           axios.post('http://localhost:4000/getcart', {}, {
+           axios.post('https://bbuyorcry3.onrender.com/getcart', {}, {
                headers: {
                    'auth-token': `${localStorage.getItem('auth-token')}`,
                    'Content-Type': 'application/json',
@@ -49,7 +49,7 @@ const ShopContextProvider = (props) => {
            setTimeout(() => {
                setAddToCartMessage(null);
            }, 2000);
-           axios.post('http://localhost:4000/addtocart', { itemId, size }, {
+           axios.post('https://bbuyorcry3.onrender.com/addtocart', { itemId, size }, {
                headers: {
                    'auth-token': `${localStorage.getItem('auth-token')}`,
                    'Content-Type': 'application/json',
@@ -69,7 +69,7 @@ const ShopContextProvider = (props) => {
             return newCartItems;
         });
         if (localStorage.getItem('auth-token')) {
-            axios.post('http://localhost:4000/removefromcart', { itemId }, {
+            axios.post('https://bbuyorcry3.onrender.com/removefromcart', { itemId }, {
                 headers: {
                     'auth-token': `${localStorage.getItem('auth-token')}`,
                     'Content-Type': 'application/json',
@@ -83,7 +83,7 @@ const ShopContextProvider = (props) => {
    const updateCartItemCount = (itemId, count) => {
         setCartItems((prev) => ({ ...prev, [itemId]: { ...prev[itemId], quantity: count } }));
         if (localStorage.getItem('auth-token')) {
-            axios.post('http://localhost:4000/updatecart', { itemId, count, size: cartItems[itemId].size }, {
+            axios.post('https://bbuyorcry3.onrender.com/updatecart', { itemId, count, size: cartItems[itemId].size }, {
                 headers: {
                     'auth-token': `${localStorage.getItem('auth-token')}`,
                 }

@@ -12,7 +12,7 @@ const AdminOrders = () => {
     const fetchAllOrders = async () => {
         const token = localStorage.getItem('auth-token');
         try {
-            const response = await fetch('http://localhost:4000/admin/allorders', {
+            const response = await fetch('https://bbuyorcry3.onrender.com/admin/allorders', {
                 headers: {
                     'auth-token': token
                 }
@@ -24,7 +24,6 @@ const AdminOrders = () => {
 
             const data = await response.json();
 
-            // Ensure data is an array
             if (Array.isArray(data)) {
                 setOrders(data);
             } else {
@@ -42,7 +41,7 @@ const AdminOrders = () => {
     const updateOrderStatus = async (orderId, newStatus) => {
         const token = localStorage.getItem('auth-token');
         try {
-            const response = await fetch('http://localhost:4000/admin/update-order-status', {
+            const response = await fetch('https://bbuyorcry3.onrender.com/admin/update-order-status', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -55,7 +54,6 @@ const AdminOrders = () => {
             });
             const data = await response.json();
             if (data.success) {
-                // Update the order status in the local state
                 setOrders(orders.map(order => 
                     order._id === orderId ? { ...order, status: newStatus } : order
                 ));
