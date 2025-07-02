@@ -16,7 +16,7 @@ router.post('/create-checkout-session', async (req, res) => {
                 name: item.name,
                 images: [item.image.startsWith('http://') || item.image.startsWith('https://') ? item.image.substring(0, 2000) : 'https://example.com/default-image.jpg'],
             },
-            unit_amount: item.new_price * 100, // Amount in cents
+            unit_amount: item.new_price * 100, 
         },
         quantity: item.quantity,
     }));
@@ -26,8 +26,8 @@ router.post('/create-checkout-session', async (req, res) => {
             payment_method_types: ['card'],
             line_items: line_items,
             mode: 'payment',
-            success_url: `http://localhost:3000/myorders`,
-            cancel_url: `http://localhost:3000/cancel`,
+            success_url: `https://buyorcry3.onrender.com/myorders`,
+            cancel_url: `https://buyorcry3.onrender.com/cancel`,
             metadata: {
                 customerName: customerDetails.name,
                 customerAddress: customerDetails.address,
@@ -36,7 +36,6 @@ router.post('/create-checkout-session', async (req, res) => {
                 customerEmail: customerDetails.email,
             },
         });
-         // Extract user ID from token
          let userId;
          const token = req.header('auth-token');
          if (token) {
@@ -52,7 +51,6 @@ router.post('/create-checkout-session', async (req, res) => {
              return res.status(500).json({ error: "Could not create checkout session", details: "Auth token missing" });
          }
 
-        // Create order
         const order = new Order({
             userId: userId,
             items: items.map(item => ({
