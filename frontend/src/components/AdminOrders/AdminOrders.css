@@ -1,0 +1,290 @@
+.admin-orders {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: var(--spacing-3xl) var(--spacing-xl);
+    background: var(--gray-50);
+    min-height: 100vh;
+    font-family: var(--font-primary);
+}
+
+.admin-orders h1 {
+    text-align: center;
+    margin-bottom: var(--spacing-3xl);
+    color: var(--gray-900);
+    font-size: 2.5rem;
+    font-weight: 700;
+    font-family: var(--font-secondary);
+    position: relative;
+}
+
+.admin-orders h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    border-radius: var(--radius-sm);
+}
+
+.admin-orders-loading {
+    text-align: center;
+    font-size: 1.125rem;
+    color: var(--gray-600);
+    padding: var(--spacing-3xl);
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+}
+
+.orders-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+}
+
+.order-card {
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-2xl);
+    padding: var(--spacing-2xl);
+    background: var(--white);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.order-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--primary-color), var(--accent-color));
+}
+
+.order-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 2px solid var(--gray-100);
+}
+
+.order-header h3 {
+    margin: 0;
+    color: var(--gray-900);
+    font-size: 1.25rem;
+    font-weight: 700;
+    font-family: var(--font-secondary);
+}
+
+.order-status {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--radius-xl);
+    color: var(--white);
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: var(--shadow-sm);
+}
+
+.order-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-2xl);
+    margin-bottom: var(--spacing-xl);
+}
+
+.customer-info,
+.order-info {
+    background: var(--gray-50);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--gray-200);
+}
+
+.customer-info h4,
+.order-info h4 {
+    margin: 0 0 var(--spacing-md) 0;
+    color: var(--gray-900);
+    font-weight: 600;
+    font-family: var(--font-secondary);
+}
+
+.customer-info p,
+.order-info p {
+    margin: var(--spacing-xs) 0;
+    color: var(--gray-700);
+    font-size: 0.95rem;
+}
+
+.order-items {
+    margin-bottom: var(--spacing-xl);
+}
+
+.order-items h4 {
+    margin-bottom: var(--spacing-lg);
+    color: var(--gray-900);
+    font-weight: 600;
+    font-family: var(--font-secondary);
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-lg);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-md);
+    background: var(--white);
+    transition: all var(--transition-fast);
+}
+
+.order-item:hover {
+    background: var(--gray-50);
+    transform: translateX(4px);
+}
+
+.item-details p {
+    margin: var(--spacing-xs) 0;
+    color: var(--gray-700);
+}
+
+.item-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.order-actions {
+    background: var(--gray-50);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--gray-200);
+}
+
+.order-actions h4 {
+    margin-bottom: var(--spacing-md);
+    color: var(--gray-900);
+    font-weight: 600;
+    font-family: var(--font-secondary);
+}
+
+.status-buttons {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.status-btn {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border: none;
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.875rem;
+    transition: all var(--transition-fast);
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+}
+
+.status-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.status-btn:hover::before {
+    left: 100%;
+}
+
+.status-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.status-btn:disabled::before {
+    display: none;
+}
+
+.status-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.status-btn.packaging {
+    background: linear-gradient(135deg, #2196f3, #1976d2);
+    color: var(--white);
+}
+
+.status-btn.shipped {
+    background: linear-gradient(135deg, #9c27b0, #7b1fa2);
+    color: var(--white);
+}
+
+.status-btn.delivered {
+    background: linear-gradient(135deg, var(--success-color), #388e3c);
+    color: var(--white);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .admin-orders {
+        padding: var(--spacing-lg);
+    }
+
+    .admin-orders h1 {
+        font-size: 2rem;
+    }
+
+    .order-card {
+        padding: var(--spacing-lg);
+    }
+
+    .order-details {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .order-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-md);
+    }
+
+    .item-image {
+        width: 60px;
+        height: 60px;
+    }
+
+    .status-buttons {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+
+    .status-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

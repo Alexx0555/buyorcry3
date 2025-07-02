@@ -1,0 +1,139 @@
+.item {
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    transition: all var(--transition-normal);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--gray-200);
+    position: relative;
+    cursor: pointer;
+    width: 100%;
+    max-width: 320px;
+}
+
+.item:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--primary-color);
+}
+
+.item img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    transition: all var(--transition-normal);
+}
+
+.item:hover img {
+    transform: scale(1.05);
+}
+
+.item-details {
+    padding: var(--spacing-lg);
+}
+
+.item-name {
+    margin: 0 0 var(--spacing-sm) 0;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--gray-900);
+    font-family: var(--font-secondary);
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.item-prices {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-sm);
+}
+
+.item-new-price {
+    color: var(--primary-color);
+    font-size: 1.25rem;
+    font-weight: 700;
+    font-family: var(--font-secondary);
+}
+
+.item-old-price {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--gray-400);
+    text-decoration: line-through;
+}
+
+/* Out of stock styles */
+.item.out-of-stock {
+    opacity: 0.7;
+    position: relative;
+}
+
+.item.out-of-stock:hover {
+    transform: none;
+    cursor: not-allowed;
+    box-shadow: var(--shadow-sm);
+    border-color: var(--gray-200);
+}
+
+.disabled-link {
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+.out-of-stock-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, var(--error-color), var(--danger-color));
+    color: var(--white);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    font-size: 0.875rem;
+    z-index: 10;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.out-of-stock-text {
+    text-decoration: line-through;
+    color: var(--gray-400) !important;
+}
+
+.item.out-of-stock img {
+    filter: grayscale(70%) brightness(0.8);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .item {
+        max-width: 100%;
+    }
+
+    .item img {
+        height: 240px;
+    }
+
+    .item-details {
+        padding: var(--spacing-md);
+    }
+
+    .item-name {
+        font-size: 1rem;
+    }
+
+    .item-new-price {
+        font-size: 1.125rem;
+    }
+
+    .item-old-price {
+        font-size: 0.875rem;
+    }
+}

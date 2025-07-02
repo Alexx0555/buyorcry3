@@ -1,0 +1,171 @@
+.login-signup {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--white) 50%, var(--gray-50) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-xl);
+    position: relative;
+}
+
+.login-signup::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 30%, rgba(37, 99, 235, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(245, 158, 11, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.login-signup-container {
+    width: 100%;
+    max-width: 480px;
+    background: var(--white);
+    padding: var(--spacing-3xl);
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-xl);
+    border: 1px solid var(--gray-200);
+    position: relative;
+    z-index: 2;
+    backdrop-filter: blur(10px);
+}
+
+.login-signup-container h1 {
+    margin: 0 0 var(--spacing-2xl) 0;
+    color: var(--gray-900);
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: var(--font-secondary);
+    position: relative;
+}
+
+.login-signup-container h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    border-radius: var(--radius-sm);
+}
+
+.login-signup-fields {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+}
+
+.login-signup-fields input {
+    height: 56px;
+    width: 100%;
+    padding: 0 var(--spacing-lg);
+    border: 2px solid var(--gray-300);
+    outline: none;
+    color: var(--gray-700);
+    font-size: 1rem;
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-fast);
+    background: var(--white);
+}
+
+.login-signup-fields input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+.login-signup-fields input::placeholder {
+    color: var(--gray-400);
+}
+
+.login-signup-container button {
+    width: 100%;
+    height: 56px;
+    color: var(--white);
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+    margin-top: var(--spacing-xl);
+    border: none;
+    font-size: 1.125rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-normal);
+    box-shadow: var(--shadow-md);
+    position: relative;
+    overflow: hidden;
+}
+
+.login-signup-container button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.login-signup-container button:hover::before {
+    left: 100%;
+}
+
+.login-signup-container button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.login-signup-container button:active {
+    transform: translateY(0);
+}
+
+.login-signup-login {
+    margin-top: var(--spacing-xl);
+    color: var(--gray-600);
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.login-signup-login span {
+    color: var(--primary-color);
+    font-weight: 600;
+    cursor: pointer;
+    transition: color var(--transition-fast);
+}
+
+.login-signup-login span:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .login-signup {
+        padding: var(--spacing-md);
+    }
+
+    .login-signup-container {
+        padding: var(--spacing-xl);
+    }
+
+    .login-signup-container h1 {
+        font-size: 1.75rem;
+    }
+
+    .login-signup-fields input {
+        height: 48px;
+        font-size: 0.875rem;
+    }
+
+    .login-signup-container button {
+        height: 48px;
+        font-size: 1rem;
+    }
+}
