@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Order = mongoose.model('Order', {
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
   items: [{
-    productId: { type: Number, required: true }, // Changed from ObjectId to Number to match Product.id
+    productId: { type: Number, required: true }, 
     quantity: { type: Number, required: true },
     price: { type: Number, required: true },
   }],

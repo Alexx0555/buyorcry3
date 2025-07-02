@@ -41,7 +41,6 @@ router.get('/allproducts', async (req, res) => {
     res.send(products);
 });
 
-// Admin routes with authentication
 router.post('/admin/addproduct', fetchUser, isAdmin, async (req, res) => {
     console.log("Admin add product request body:", req.body);
     let products = await Product.find({});
@@ -79,7 +78,6 @@ router.get('/admin/allproducts', fetchUser, isAdmin, async (req, res) => {
     res.send(products);
 });
 
-// Toggle product out of stock status
 router.post('/admin/toggle-stock', fetchUser, isAdmin, async (req, res) => {
     try {
         const { productId, outOfStock } = req.body;

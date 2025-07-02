@@ -11,7 +11,6 @@ router.get('/myorders', fetchUser, async (req, res) => {
     const userId = req.user.id;
     const orders = await Order.find({ userId });
 
-    // Manually populate product details since productId is a Number, not ObjectId
     const ordersWithProducts = await Promise.all(
       orders.map(async (order) => {
         const itemsWithProducts = await Promise.all(
@@ -37,12 +36,10 @@ router.get('/myorders', fetchUser, async (req, res) => {
   }
 });
 
-// Admin route to get all orders
 router.get('/admin/allorders', fetchUser, isAdmin, async (req, res) => {
   try {
     const orders = await Order.find({}).sort({ orderDate: -1 });
 
-    // Manually populate product details and user details
     const ordersWithDetails = await Promise.all(
       orders.map(async (order) => {
         const itemsWithProducts = await Promise.all(
@@ -61,7 +58,6 @@ router.get('/admin/allorders', fetchUser, isAdmin, async (req, res) => {
           ...order.toObject(),
           items: itemsWithProducts,
           user: user ? { name: user.name, email: user.email } : { name: 'User not found', email: '' },
-          // Ensure customerDetails exists for backward compatibility
           customerDetails: order.customerDetails || {
             name: user?.name || 'N/A',
             email: user?.email || 'N/A',
@@ -69,7 +65,6 @@ router.get('/admin/allorders', fetchUser, isAdmin, async (req, res) => {
             address: 'N/A',
             pincode: 'N/A'
           },
-          // Ensure status exists for backward compatibility
           status: order.status || 'pending'
         };
       })
@@ -82,7 +77,6 @@ router.get('/admin/allorders', fetchUser, isAdmin, async (req, res) => {
   }
 });
 
-// Admin route to update order status
 router.post('/admin/update-order-status', fetchUser, isAdmin, async (req, res) => {
   try {
     const { orderId, status } = req.body;
